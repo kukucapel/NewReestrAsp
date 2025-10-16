@@ -1,0 +1,6 @@
+@NewReestrAsp_HostAddress = http://localhost:5070
+
+GET {{NewReestrAsp_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
