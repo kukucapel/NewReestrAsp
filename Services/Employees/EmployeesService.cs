@@ -79,6 +79,7 @@ public class EmployeesService
         return employee;
     }
 
+    //Изменение сотрудника
     public async Task<bool> UpdateEmployeeAsync(int id, [FromBody] EmployeeUpdateDto employeeUpdateDto)
     {
         var employee = _context.GovernmentEmployees.FirstOrDefault(e => e.Id == id);
@@ -94,6 +95,7 @@ public class EmployeesService
         return true;
     }
 
+    //Удаление сотрудника
     public async Task<bool> DeleteEmployeeAsync(int id)
     {
         var employee = _context.GovernmentEmployees.FirstOrDefault(e => e.Id == id);

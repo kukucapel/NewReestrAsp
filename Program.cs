@@ -28,10 +28,14 @@ builder.Services.AddSwaggerGen(c =>
 //Общие
 builder.Services.AddScoped<MetaService>(); //мета
 builder.Services.AddAutoMapper(typeof(MappingProfile)); //маппер
-//Работники
+//Сотрудники
 builder.Services.AddScoped<EmployeesService>();
 //Образование
 builder.Services.AddScoped<EmployeeEducationService>();
+//Архив сотрудников
+builder.Services.AddScoped<EmployeesArchiveService>();
+//Образование архива
+builder.Services.AddScoped<EmployeeEducationArchiveService>();
 //Юниты
 builder.Services.AddScoped<UnitService>();
 

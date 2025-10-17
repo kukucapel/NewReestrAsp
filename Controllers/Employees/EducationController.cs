@@ -49,7 +49,7 @@ public class EducationController : ControllerBase
     /// Изменение образования работника по id образования
     /// </summary>
     /// <param name="idEducation">Id образования</param>
-     /// <param name="employeeEducationUpdateDto">Тело с данными образования</param> 
+    /// <param name="employeeEducationUpdateDto">Тело с данными образования</param> 
     /// <returns></returns>
     [HttpPut("education/{idEducation}")]
     public async Task<IActionResult> PutEducationById(int idEducation, [FromBody]EmployeeEducationUpdateDto employeeEducationUpdateDto)
@@ -83,6 +83,6 @@ public class EducationController : ControllerBase
             return NotFound(new { message = "Образование не найдено" });
         }
 
-        return Ok(new{message = "Образование успешно удалено"});
+        return Ok(new { message = "Образование успешно удалено" });
     }
 }

@@ -5,15 +5,15 @@ public class EmployeeDto
     public int id { get; set; }
     public string surname { get; set; } = null!;
     public string name { get; set; } = null!;
-    public string patronymic { get; set; } = null!;
+    public string? patronymic { get; set; }
     public string birth_date { get; set; } = null!;
     public string gender { get; set; } = null!;
-    public string post { get; set; } = null!;
+    public string? post { get; set; } 
     public string? start_work_date { get; set; }
     public string? temp { get; set; }
-    public string number_phone_division { get; set; } = null!;
-    public string addres { get; set; } = null!;
-    public string mobile_number { get; set; } = null!;
+    public string? number_phone_division { get; set; }
+    public string? addres { get; set; }
+    public string? mobile_number { get; set; }
 
     public int? id_unit { get; set; }
 
@@ -26,15 +26,15 @@ public class EmployeeCreateDto
     public int id { get; set; }
     public string surname { get; set; } = null!;
     public string name { get; set; } = null!;
-    public string patronymic { get; set; } = null!;
+    public string? patronymic { get; set; }
     public string birth_date { get; set; } = null!;
     public string gender { get; set; } = null!;
-    public string post { get; set; } = null!;
+    public string? post { get; set; }
     public string? start_work_date { get; set; }
     public string? temp { get; set; }
-    public string number_phone_division { get; set; } = null!;
-    public string addres { get; set; } = null!;
-    public string mobile_number { get; set; } = null!;
+    public string? number_phone_division { get; set; }
+    public string? addres { get; set; }
+    public string? mobile_number { get; set; }
 
     public int? id_unit { get; set; }
 }
