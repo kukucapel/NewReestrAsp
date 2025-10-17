@@ -92,6 +92,27 @@ public class MappingProfile : Profile
 
 
         //АРХИВ
+
+        //создание образования
+        CreateMap<EmployeeEducationCreateDto, GovernmentEmployeesEducationArchive>()
+            .ForMember(dest => dest.Id, opt => opt.Ignore()) // id ставит база
+            .ForMember(dest => dest.IdEmployee, opt => opt.MapFrom(src => src.id_employee))
+            .ForMember(dest => dest.Education, opt => opt.MapFrom(src => src.education))
+            .ForMember(dest => dest.TypeEducation, opt => opt.MapFrom(src => src.type_education))
+            .ForMember(dest => dest.EducationalInstitution, opt => opt.MapFrom(src => src.educational_institution))
+            .ForMember(dest => dest.Profession, opt => opt.MapFrom(src => src.profession))
+            .ForMember(dest => dest.TypeProfession, opt => opt.MapFrom(src => src.type_profession));
+        
+        //изменение образования
+        CreateMap<EmployeeEducationUpdateDto, GovernmentEmployeesEducationArchive>()
+            .ForMember(dest => dest.Id, opt => opt.Ignore()) // id ставит база
+            .ForMember(dest => dest.IdEmployee, opt => opt.Ignore())
+            .ForMember(dest => dest.Education, opt => opt.MapFrom(src => src.education))
+            .ForMember(dest => dest.TypeEducation, opt => opt.MapFrom(src => src.type_education))
+            .ForMember(dest => dest.EducationalInstitution, opt => opt.MapFrom(src => src.educational_institution))
+            .ForMember(dest => dest.Profession, opt => opt.MapFrom(src => src.profession))
+            .ForMember(dest => dest.TypeProfession, opt => opt.MapFrom(src => src.type_profession)).ForAllMembers(opt => opt.Condition((src, dest, srcMember) => srcMember != null));
+
         //вывод сотрудников из архива
         CreateMap<GovernmentEmployeesArchive, EmployeeArchiveDto>()
                .ForMember(dest => dest.id, opt => opt.MapFrom(src => src.Id))

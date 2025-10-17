@@ -34,6 +34,8 @@ builder.Services.AddScoped<EmployeesService>();
 builder.Services.AddScoped<EmployeeEducationService>();
 //Архив сотрудников
 builder.Services.AddScoped<EmployeesArchiveService>();
+//Образование архива
+builder.Services.AddScoped<EmployeeEducationArchiveService>();
 //Юниты
 builder.Services.AddScoped<UnitService>();
 
