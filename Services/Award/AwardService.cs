@@ -45,4 +45,37 @@ public class AwardService
 
         return award;
     }
+
+    //изменение награды
+    public async Task<bool> UpdateAwardByIdAsync(int id, [FromBody] AwardCreateUpdateDto awardCreateUpdateDto)
+    {
+        var award = _context.Awards.FirstOrDefault(e => e.Id == id);
+
+        if (award == null)
+        {
+            return false;
+        }
+        _mapper.Map(awardCreateUpdateDto, award);
+
+        await _context.SaveChangesAsync();
+
+        return true;
+    }
+
+    //удаление награды
+    public async Task<bool> DeleteAwardByIdAsync(int id)
+    {
+        var award = _context.Awards.FirstOrDefault(e => e.Id == id);
+
+        if (award == null)
+        {
+            return false;
+        }
+
+        _context.Awards.Remove(award);
+
+        await _context.SaveChangesAsync();
+
+        return true;
+    }
 }

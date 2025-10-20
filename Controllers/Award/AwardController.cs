@@ -47,7 +47,7 @@ public class AwardController : ControllerBase
     /// Получить награду и список файлов по id 
     /// </summary>
     /// <param name="id">Id награды</param>
-    [HttpGet("id/{id}")]
+    [HttpGet("{id}")]
     public async Task<IActionResult> GetAwardById(int id)
     {
         var result = await _awardService.GetAwardByIdAsync(id);
@@ -62,7 +62,7 @@ public class AwardController : ControllerBase
     /// <summary>
     /// Создание награды
     /// </summary>
-    /// <returns></returns>
+    /// <param name="awardCreateUpdateDto">Тело с данными награды</param>
     [HttpPost("create")]
     public async Task<IActionResult> CreateAward([FromBody] AwardCreateUpdateDto awardCreateUpdateDto)
     {
@@ -76,4 +76,44 @@ public class AwardController : ControllerBase
         return Ok(new { message = "Награда успешно добавлена", id = createdAward.Id });
     }
 
+    /// <summary>
+    /// Изменение награды по id 
+    /// </summary>
+    /// <param name="id">Id награды</param>
+    /// <param name="awardCreateUpdateDto">Тело с данными награды</param>
+    [HttpPut("{id}")]
+    public async Task<IActionResult> PutAwardById(int id, [FromBody] AwardCreateUpdateDto awardCreateUpdateDto)
+    {
+        if (!ModelState.IsValid)
+        {
+            return BadRequest(ModelState);
+        }
+
+        var result = await _awardService.UpdateAwardByIdAsync(id, awardCreateUpdateDto);
+
+        if (!result)
+        {
+            return NotFound(new { message = "Награда не найдена" });
+        }
+
+        return Ok(new { message = "Награда успешно изменена" });
+    }
+
+    /// <summary>
+    /// Удаление награды по id
+    /// </summary>
+    /// <param name="id">Id награды</param>
+    /// <returns></returns>
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> DeleteAwardById(int id)
+    {
+        var result = await _awardService.DeleteAwardByIdAsync(id);
+
+        if (!result)
+        {
+            return NotFound(new { message = "Награда не найдена" });
+        }
+
+        return Ok(new { message = "Награда успешно удалена" });
+    }
 }

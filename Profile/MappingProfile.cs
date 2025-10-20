@@ -162,7 +162,7 @@ public class MappingProfile : Profile
 
         //НАГРАДЫ
         CreateMap<AwardCreateUpdateDto, Award>()
-            .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.id))
+            .ForMember(dest => dest.Id, opt => opt.Ignore())
             .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.name))
             .ForMember(dest => dest.Period, opt => opt.MapFrom(src => src.period))
             .ForMember(dest => dest.Fio, opt => opt.MapFrom(src => src.fio))
