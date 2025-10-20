@@ -55,7 +55,7 @@ public class EmployeesController : ControllerBase
         {
             return NotFound(new { message = "Работник не найден" });
         }
-        _logger.LogInformation($"Работник {id}");
+
         return Ok(new { data = employee });
     }
 

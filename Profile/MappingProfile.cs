@@ -141,7 +141,7 @@ public class MappingProfile : Profile
             .ForMember(dest => dest.educational_institution, opt => opt.MapFrom(src => src.EducationalInstitution))
             .ForMember(dest => dest.profession, opt => opt.MapFrom(src => src.Profession))
             .ForMember(dest => dest.type_profession, opt => opt.MapFrom(src => src.TypeProfession));
-        
+
         //обновление человека из архива
         CreateMap<EmployeeArchiveUpdateDto, GovernmentEmployeesArchive>()
             .ForMember(dest => dest.Id, opt => opt.Ignore()) // id ставит база
@@ -160,6 +160,41 @@ public class MappingProfile : Profile
             .ForMember(dest => dest.MobileNumber, opt => opt.MapFrom(src => src.mobile_number))
             .ForAllMembers(opt => opt.Condition((src, dest, srcMember) => srcMember != null));
 
+        //НАГРАДЫ
+        CreateMap<AwardCreateUpdateDto, Award>()
+            .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.id))
+            .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.name))
+            .ForMember(dest => dest.Period, opt => opt.MapFrom(src => src.period))
+            .ForMember(dest => dest.Fio, opt => opt.MapFrom(src => src.fio))
+            .ForMember(dest => dest.Organization, opt => opt.MapFrom(src => src.organization))
+            .ForMember(dest => dest.Text, opt => opt.MapFrom(src => src.text))
+            .ForMember(dest => dest.RegistrationNumber, opt => opt.MapFrom(src => src.registration_number))
+            .ForMember(dest => dest.ReceiptDate, opt => opt.MapFrom(src => src.receipt_date))
+            .ForMember(dest => dest.OrderNumber, opt => opt.MapFrom(src => src.order_number))
+            .ForMember(dest => dest.OrderDate, opt => opt.MapFrom(src => src.order_number))
+            .ForMember(dest => dest.Attachments, opt => opt.MapFrom(src => src.attachments))
+            .ForAllMembers(opt => opt.Condition((src, dest, srcMember) => srcMember != null));
+
+        CreateMap<Award, AwardDto>()
+            .ForMember(dest => dest.id, opt => opt.MapFrom(src => src.Id))
+            .ForMember(dest => dest.name, opt => opt.MapFrom(src => src.Name))
+            .ForMember(dest => dest.period, opt => opt.MapFrom(src => src.Period))
+            .ForMember(dest => dest.fio, opt => opt.MapFrom(src => src.Fio))
+            .ForMember(dest => dest.organization, opt => opt.MapFrom(src => src.Organization))
+            .ForMember(dest => dest.text, opt => opt.MapFrom(src => src.Text))
+            .ForMember(dest => dest.registration_number, opt => opt.MapFrom(src => src.RegistrationNumber))
+            .ForMember(dest => dest.receipt_date, opt => opt.MapFrom(src => src.ReceiptDate))
+            .ForMember(dest => dest.order_number, opt => opt.MapFrom(src => src.OrderNumber))
+            .ForMember(dest => dest.order_date, opt => opt.MapFrom(src => src.OrderDate))
+            .ForMember(dest => dest.attachments, opt => opt.MapFrom(src => src.Attachments))
+            .ForMember(dest => dest.awards_documents, opt => opt.MapFrom(src => src.AwardsDocuments));
+        
+        CreateMap<AwardsDocument, AwardsDocumentDto>()
+            .ForMember(dest => dest.id, opt => opt.MapFrom(src => src.Id))
+            .ForMember(dest => dest.id_award, opt => opt.MapFrom(src => src.IdAward))
+            .ForMember(dest => dest.name_document, opt => opt.MapFrom(src => src.NameDocument))
+            .ReverseMap()
+            .ForAllMembers(opt => opt.Condition((src, dest, srcMember) => srcMember != null));
 
         //ЮНИТЫ
         CreateMap<Unit, UnitDto>()
