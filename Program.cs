@@ -36,6 +36,8 @@ builder.Services.AddScoped<EmployeeEducationService>();
 builder.Services.AddScoped<EmployeesArchiveService>();
 //Образование архива
 builder.Services.AddScoped<EmployeeEducationArchiveService>();
+//Награды
+builder.Services.AddScoped<AwardService>();
 //Юниты
 builder.Services.AddScoped<UnitService>();
 
